@@ -1,0 +1,51 @@
+{
+    "name": "logispot/papertrail",
+    "license": "MIT",
+    "description": "Manage a history of your models simply by adding a package for Laravel",
+    "keywords": ["model", "laravel", "revision", "audit", "history", "papertrail", "log", "logging"],
+    "homepage": "https://www.logi-spot.com",
+    "authors": [
+        {
+            "name": "Logispot",
+            "email": "dev@logi-spot.com"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/Logispot/PaperTrail/issues",
+        "source": "https://github.com/Logispot/PaperTrail"
+    },
+    "require": {
+        "php": "^7.2",
+        "illuminate/config": "^6.0|^7.0",
+        "illuminate/database": "^6.0|^7.0",
+        "illuminate/support": "^6.0|^7.0",
+        "laravel/framework": "~5.4|^6.0|^7.0"
+    },
+    "autoload": {
+        "classmap": [
+            "migrations/"
+        ],
+        "psr-4": {
+            "Logispot\\PaperTrail\\": "src/"
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8.0"
+    },
+    "autoload-dev": {
+        "classmap": [
+            "tests/migrations"
+        ],
+        "psr-4": {
+            "Logispot\\PaperTrail\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Logispot\\PaperTrail\\PaperTrailServiceProvider"
+            ]
+        }
+    },
+    "prefer-stable": true
+}
