@@ -114,7 +114,7 @@ trait PaperTrail
                 'reference_type' => $this->getMorphClass(),
                 'reference_id' => $this->getKey(),
                 'key' => $key,
-                'old_value' => ($this->updating) ? $this->originalTrail[$key] : null,
+                'old_value' => ($this->updating) ? ($this->originalTrail[$key] ?? null) : null,
                 'new_value' => $this->updatedTrail[$key],
                 'user_id' => $user['id'],
                 'user_type' => $user['class'],
