@@ -1,6 +1,7 @@
 <?php
 
 namespace Logispot\PaperTrail\Traits;
+use Illuminate\Support\Facades\Request;
 
 /**
  * Class PaperTrail
@@ -118,6 +119,7 @@ trait PaperTrail
                 'new_value' => $this->updatedTrail[$key],
                 'user_id' => $user['id'],
                 'user_type' => $user['class'],
+                'remote_ip' => Request::ip() ?: '0.0.0.0',
                 'created_at' => now(),
                 'updated_at' => now(),
             ];
