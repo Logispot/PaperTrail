@@ -123,6 +123,7 @@ trait PaperTrail
                     'new_value' => $newValue,
                     'user_id' => $user['id'],
                     'user_type' => $user['class'],
+                    'remote_ip' => Request::ip() ?: '0.0.0.0',
                     'created_at' => now(),
                     'updated_at' => now(),
                 ];
