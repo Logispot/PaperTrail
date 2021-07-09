@@ -110,19 +110,23 @@ trait PaperTrail
 
         foreach ($changedAttributes as $key => $change) {
             $user = $this->userInformation();
-            $paperTrails[] = [
-                'description' => $description,
-                'reference_type' => $this->getMorphClass(),
-                'reference_id' => $this->getKey(),
-                'key' => $key,
-                'old_value' => ($this->updating) ? ($this->originalTrail[$key] ?? null) : null,
-                'new_value' => $this->updatedTrail[$key],
-                'user_id' => $user['id'],
-                'user_type' => $user['class'],
-                'remote_ip' => Request::ip() ?: '0.0.0.0',
-                'created_at' => now(),
-                'updated_at' => now(),
-            ];
+            $oldValue = ($this->updating) ? ($this->originalTrail[$key] ?? null) : null;
+            $newValue = $this->updatedTrail[$key];
+
+            if ($oldValue != $newValue) {
+                $paperTrails[] = [
+                    'description' => $description,
+                    'reference_type' => $this->getMorphClass(),
+                    'reference_id' => $this->getKey(),
+                    'key' => $key,
+                    'old_value' => $oldValue,
+                    'new_value' => $newValue,
+                    'user_id' => $user['id'],
+                    'user_type' => $user['class'],
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ];
+            }
         }
 
         if (count($paperTrails) > 0) {
